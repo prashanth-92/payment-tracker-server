@@ -16,7 +16,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-mongoose.connect('mongodb://<user>:<pass>@<server>:39009/<db>');
+mongoose.connect(process.env.DBURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
